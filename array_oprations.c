@@ -62,7 +62,6 @@ int main()
         printf("\nenter a[%d] elemnt:", i+1);
         scanf("%d", &a[i]);
     }
-    // size=sizeof(a)/sizeof(int);
     display(a, size);
     printf("\n1: for insertion\n2: for deletion:\n3: for search\nenter opertion->");
     scanf("%d", &ch);
