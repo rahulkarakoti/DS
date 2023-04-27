@@ -25,7 +25,7 @@ void binery_search(int a[], int srch, int size)
         if (a[mid] < srch)
         {
             low = mid + 1;
-        }
+        }    
         else
         {
             high = mid - 1;
