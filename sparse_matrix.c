@@ -37,13 +37,13 @@ int main()
     }
 
     printf("non-zero value are at:");
-    printf("\nrow  col value ");
+    printf("\nrow\tcol\tvalue ");
      for (i = 0; i < row; i++)
     {
         for (j = 0; j < col; j++)
         {
             if(a[i][j]!=0){
-                printf("\n%d %d %d",i+1,j+1,a[i][j]);
+                printf("\n%d\t%d\t%d",i+1,j+1,a[i][j]);
             }
         }
         // printf("\n");
