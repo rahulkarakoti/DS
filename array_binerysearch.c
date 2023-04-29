@@ -1,5 +1,6 @@
 // ARRAY OPRATIONS
 #include <stdio.h>
+
 // display
 void display(int a[], int size)
 {

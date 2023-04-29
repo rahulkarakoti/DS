@@ -1,5 +1,6 @@
 //ARRAY OPRATIONS
 #include <stdio.h>
+
 // display
 void display(int a[], int size)
 {
@@ -8,6 +9,7 @@ void display(int a[], int size)
         printf("%d ", a[i]);
     }
 }
+
 // insertion
 int insertion(int a[], int size, int element, int index, int capacity)
 {
@@ -34,6 +36,7 @@ int deletion(int a[], int size, int index,int capacity)
         a[i] = a[i + 1];
     }
 }
+
 //linear search
 void linear_search(int a[],int srch,int size)
 {
