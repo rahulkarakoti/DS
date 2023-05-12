@@ -120,7 +120,7 @@ int main()
             linkedlist_view(head);
             break;
     case 4:
-            head = insertion_afternode(head,third,x); // x is inserted at 2nd index
+            head = insertion_afternode(head,second,x); // x is inserted at 2nd index
             printf("\n");
             linkedlist_view(head);
             break;
