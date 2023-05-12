@@ -7,14 +7,14 @@ void enqueue() // insert elment from rear
     int data;
     printf("enter elment:");
     scanf("%d", &data);
-    if (front == max - 1)
+    if (rear == max - 1)
     {
         printf("queue overflow");
     }
     else if (front == -1 && rear == -1)//it is a first elemnt
     {
         front = rear = 0;
-        queue[front] = data;
+        queue[rear] = data;
     }
     else
     {
