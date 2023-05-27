@@ -115,7 +115,7 @@ int main()
             linkedlist_view(head);
             break;
         case 3:
-            head = insertion_atend(head,x); // x is inserted at 3rd index
+            head = insertion_atend(head,x); // x is inserted at end 
             printf("\n");
             linkedlist_view(head);
             break;
