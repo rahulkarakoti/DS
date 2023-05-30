@@ -23,6 +23,7 @@ struct node *insertion_atfirst(struct node *head, int data) // case 1: insert el
     struct node *ptr = (struct node *)malloc(sizeof(struct node));
     ptr->next = head;
     ptr->data = data;
+    return ptr;
 }
 
 struct node *insertion_atindex(struct node *head, int index, int data) // case 2: insert element at any index

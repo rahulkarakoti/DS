@@ -63,7 +63,7 @@ void display()
     {
         printf("queue is empty");
     }
-printf("queue :");
+    printf("queue :");
     if (front <= rear)
     {
         for (i = front; i <= rear; i++)
