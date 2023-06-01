@@ -7,6 +7,7 @@ struct node
     struct node *next;
 };
 
+
 void linkedlist_view(struct node *ptr)
 {
     while (ptr != NULL)
@@ -62,8 +63,8 @@ int pop(struct node **top)
     }
     else
     {
-        struct node *n = (*top);
-        (*top) = (*top)->next;
+        struct node *n = *top;
+        *top = (*top)->next;
         int x = n->data;
         free(n);
         return x;
@@ -81,7 +82,9 @@ int main()
     linkedlist_view(top);
     int element = pop(&top);
     printf("\nelemnt %d is poped\n", element);
-linkedlist_view(top);
-//   element = pop(top);
-//     printf("elemnt %d is poped", element);
+    linkedlist_view(top);
+     int element9 = pop(&top);
+    printf("elemnt %d is poped", element9);
+    linkedlist_view(top);
+return 0;
 }
