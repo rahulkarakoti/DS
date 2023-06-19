@@ -51,7 +51,6 @@ int main()
         case 1:
             push(stack, &top);
             display();
-
             break;
         case 2:
             pop();

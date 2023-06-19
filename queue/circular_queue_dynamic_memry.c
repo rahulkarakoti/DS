@@ -9,7 +9,7 @@ struct cqueue
 
 int isfull(struct cqueue *cq)
 {
-    if (cq->front == 0 && cq->rear == cq->size - 1 || cq->rear == cq->front - 1)
+    if ( cq->front == (cq->rear+1)%cq->size )
     {
         return 1;
     }
@@ -18,7 +18,7 @@ int isfull(struct cqueue *cq)
 
 int isempty(struct cqueue *cq)
 {
-    if (cq->front == -1 && cq->rear == -1)
+    if (cq->front == cq->rear )
     {
         return 1;
     }
@@ -29,47 +29,33 @@ void enqueue(struct cqueue *cq, int value)
 {
     if (isfull(cq))
     {
-        printf("\ncircular queue overflow");
-    }
-    else if (cq->rear == cq->size - 1)
-    {
-        cq->rear = 0;
-    }
-    else if (cq->front == -1 && cq->rear == -1)
-    {
-        cq->front = cq->rear = 0;
+        printf("\ncircular queue is full");
     }
     else
     {
-        cq->rear++;
-    }
-    cq->arr[cq->rear] = value;
+        cq->rear=(cq->rear+1%cq->size);
+    cq->arr[cq->rear] = value;  
+
+    }   
 }
 
-void dequeue(struct cqueue *cq)
-{
+int dequeue(struct cqueue *cq)
+{int val;
     if (isempty(cq))
     {
         printf("\ncircular queue underflow");
     }
-    else if (cq->front == cq->rear)
-    {
-        cq->front = cq->rear = -1;
-    }
-    else if (cq->front == cq->size - 1)
-    {
-        cq->front = 0;
-    }
     else
     {
-        cq->front++;
-    }
+        cq->front=(cq->front+1)%cq->size;
+         val=cq->arr[cq->front];
+    }return val;
 }
 
 void display(struct cqueue *cq)
 {
     int i;
-    if (cq->front == -1 && cq->rear == -1)
+    if (isempty(cq))
     {
         printf("\nqueue is empty");
         exit;
@@ -79,14 +65,14 @@ void display(struct cqueue *cq)
         printf("\nqueue :");
         if (cq->front <= cq->rear)
         {
-            for (i = cq->front; i <= cq->rear; i++)
+            for (i = cq->front+1; i <= cq->rear; i++)
             {
                 printf("%d ", cq->arr[i]);
             }
         }
         else
         {
-            for (i = cq->front; i < cq->size; i++)
+            for (i = cq->front+1; i < cq->size; i++)
             {
                 printf("%d ", cq->arr[i]);
             }
@@ -114,28 +100,30 @@ int main()
 {
     struct cqueue *cq;
     cq->size = 10;
-    cq->front = cq->rear = -1;
+    cq->front = cq->rear = 0;
     cq->arr = (int *)malloc(cq->size * (sizeof(int)));
 
-    // enqueue(cq,23);
-    // enqueue(cq,223);
-    // enqueue(cq,2333);
-    // enqueue(cq,243);
-    // enqueue(cq,253);
-    // enqueue(cq,238);
-    // enqueue(cq,236);
-    // enqueue(cq,239);
-    // enqueue(cq,1236);
-    // enqueue(cq,2139);
+    enqueue(cq,23);
+    enqueue(cq,223);
+    enqueue(cq,2333);
+    enqueue(cq,243);
+    enqueue(cq,253);
+    enqueue(cq,238);
+    enqueue(cq,236);
+    enqueue(cq,239);
+    enqueue(cq,1236);
+    // enqueue(cq,2139);//this will cause overflow beacuse we have front at 0 index
 
     display(cq);
 
-    // dequeue(cq);
+    int del=dequeue(cq);
+    printf("%d is dequeued",del);
     // dequeue(cq);
 
-    // display(cq);
+    display(cq);
+    enqueue(cq,6);
     // enqueue(cq,6);
+    display(cq);
     // enqueue(cq,6);
-
-    // display(cq);
+return 0;
 }
